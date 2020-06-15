@@ -2,16 +2,17 @@ const {flockSync} = require('fs-ext')
 const os = require('os')
 const path = require('path')
 const fs = require('fs')
-const poll = require('poll')
+const poll = require('poll').default
 const createFile = (path) => {
-  fs.openSync(path, 'w')
-  fs.closeSync(path)
+  const fd = fs.openSync(path, 'w')
+  fs.closeSync(fd)
 }
-class Mutex {
+class NamedMutex {
   constructor(name) {
-    if(!(name instanceof String)) 
+    if(!(typeof name === 'string')) 
       throw new Error('mutex name must be a string')
     this._filePath = path.resolve(os.tmpdir(), `${name}.mutex`)
+    console.log(this._filePath)
     if(!fs.existsSync(this._filePath)) {
       createFile(this._filePath)
     }
@@ -43,4 +44,4 @@ class Mutex {
   }
 }
 
-module.exports = Mutex
+module.exports = NamedMutex

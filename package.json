@@ -4,7 +4,7 @@
   "description": "Cross process named mutex",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -24,5 +24,8 @@
   "dependencies": {
     "fs-ext": "^2.0.0",
     "poll": "^1.0.1"
+  },
+  "devDependencies": {
+    "mocha": "^8.0.1"
   }
 }
