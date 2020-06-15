@@ -1,0 +1,28 @@
+{
+  "name": "named-mutex",
+  "version": "1.0.1",
+  "description": "Cross process named mutex",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CHChang810716/named-mutex-js.git"
+  },
+  "keywords": [
+    "multi-process",
+    "mutex",
+    "named-mutex"
+  ],
+  "author": "Chia-Hua Chang <CHChang810716@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/CHChang810716/named-mutex-js/issues"
+  },
+  "homepage": "https://github.com/CHChang810716/named-mutex-js#readme",
+  "dependencies": {
+    "fs-ext": "^2.0.0",
+    "poll": "^1.0.1"
+  }
+}
