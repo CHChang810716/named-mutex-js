@@ -12,7 +12,7 @@ class NamedMutex {
     if(!(typeof name === 'string')) 
       throw new Error('mutex name must be a string')
     this._filePath = path.resolve(os.tmpdir(), `${name}.mutex`)
-    console.log(this._filePath)
+    // console.log(this._filePath)
     if(!fs.existsSync(this._filePath)) {
       createFile(this._filePath)
     }
@@ -26,6 +26,7 @@ class NamedMutex {
       this._locked = true
       return true;
     } catch (err) {
+      // console.log(err)
       return false;
     }
   }
@@ -39,7 +40,9 @@ class NamedMutex {
     })
   }
   unLock() {
-    if(!this._locked) return;
+    if(!this._locked) {
+      throw new Error('not owned any lock')
+    }
     flockSync(this._fd, 'un')
   }
 }
