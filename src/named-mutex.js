@@ -11,8 +11,11 @@ class NamedMutex {
   constructor(name) {
     if(!(typeof name === 'string')) 
       throw new Error('mutex name must be a string')
-    this._filePath = path.resolve(os.tmpdir(), `${name}.mutex`)
-    // console.log(this._filePath)
+    if(path.isAbsolute(name)) {
+      this._filePath = path.resolve(`${name}.mutex`)
+    } else {
+      this._filePath = path.resolve(os.tmpdir(), `${name}.mutex`)
+    }
     if(!fs.existsSync(this._filePath)) {
       createFile(this._filePath)
     }
